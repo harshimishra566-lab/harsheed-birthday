@@ -1,0 +1,3535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday.exe ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #080609;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* ================= LOCK SCREEN ================= */
+
+        .lock-screen {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lock {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 30px;
+            background: #120d12;
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 70, 120, 0.15);
+            text-align: center;
+        }
+
+        .lock-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .lock h1 {
+            color: #ff6f9c;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .lock p {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            height: 50px;
+            margin-top: 25px;
+            padding: 0 18px;
+            background: #0b080b;
+            border: 1px solid #555;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #ff6f9c;
+            box-shadow: 0 0 10px rgba(255, 111, 156, 0.2);
+        }
+
+        input::placeholder {
+            color: #777;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            margin-top: 18px;
+            background: #ff477e;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #ff568a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 111, 156, 0.25);
+        }
+
+        #error-message {
+            color: #ff8aaa;
+            font-size: 14px;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+
+        /* ================= WELCOME SCREEN ================= */
+
+        .welcome {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 70, 120, 0.18),
+                    transparent 55%
+                );
+        }
+
+        .heart {
+            font-size: 75px;
+            animation: heartbeat 1.3s infinite;
+        }
+
+        .small {
+            color: #ff8fb4;
+            letter-spacing: 5px;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        .welcome h1 {
+            color: #ff6f9c;
+            font-size: 45px;
+            margin: 15px 0;
+        }
+
+        .welcome #message {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 600px;
+            min-height: 60px;
+        }
+
+        .welcome button {
+            width: auto;
+            padding: 0 28px;
+            border-radius: 30px;
+            margin-top: 30px;
+        }
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* ================= STORY ================= */
+
+        .story-section {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .story-small {
+            text-align: center;
+            color: #ff8fb4;
+            letter-spacing: 4px;
+            font-size: 12px;
+        }
+
+        .story-section h2 {
+            text-align: center;
+            color: #ff6f9c;
+            font-size: 50px;
+            margin: 15px 0;
+        }
+
+        .story-intro {
+            text-align: center;
+            color: #ccc;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .timeline {
+            border-left: 2px solid #ff6f9c;
+            padding-left: 25px;
+        }
+
+        .story-card {
+            background: #120d12;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .story-card span {
+            color: #ff8fb4;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .story-card h3 {
+            font-size: 25px;
+            margin: 10px 0;
+        }
+
+        .story-card p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+
+        /* ================= PHOTOS ================= */
+
+        .memories-title {
+            margin-top: 70px !important;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .photo-card {
+            position: relative;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: #151015;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transition: 0.4s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 20px 50px rgba(255,70,120,0.18);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .memory-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 18px 18px;
+
+            background: linear-gradient(
+                transparent,
+                rgba(0,0,0,0.9)
+            );
+
+            color: white;
+        }
+
+        .memory-label span {
+            color: #ff8fb4;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .memory-label h3 {
+            margin: 5px 0 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+        }
+
+
+        /* ================= MEMORY POPUP ================= */
+
+        .memory-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup-box {
+            position: relative;
+            width: min(500px, 100%);
+
+            background: #160f15;
+            border: 1px solid rgba(255,120,160,0.25);
+
+            border-radius: 25px;
+            padding: 40px 28px;
+
+            text-align: center;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.7),
+                0 0 50px rgba(255,60,120,0.12);
+
+            animation: popupIn 0.35s ease;
+        }
+
+        .popup-box h2 {
+            color: #ff6f9c;
+            font-size: 38px;
+        }
+
+        .popup-box p {
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        #popupIcon {
+            font-size: 50px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 17px;
+
+            background: none;
+            border: none;
+
+            color: #aaa;
+            font-size: 30px;
+
+            cursor: pointer;
+
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+
+        @keyframes popupIn {
+
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* ================= OPEN WHEN ================= */
+
+        .open-when {
+            min-height: 100vh;
+            padding: 100px 25px;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 70, 120, 0.10),
+                    transparent 55%
+                );
+        }
+
+        .open-when h2 {
+            color: #ff6f9c;
+            font-size: 50px;
+            margin: 10px 0;
+        }
+
+        .open-intro {
+            color: #bbb;
+            margin-bottom: 45px;
+        }
+
+        .letters {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .letter-card {
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            border-radius: 22px;
+
+            padding: 30px 20px;
+
+            cursor: pointer;
+
+            transition: 0.35s;
+
+            min-height: 190px;
+        }
+
+        .letter-card:hover {
+            transform:
+                translateY(-8px)
+                rotate(-1deg);
+
+            background:
+                rgba(255,70,120,0.08);
+
+            border-color:
+                rgba(255,120,160,0.35);
+
+            box-shadow:
+                0 20px 45px
+                rgba(255,50,110,0.12);
+        }
+
+        .envelope {
+            font-size: 50px;
+            transition: 0.3s;
+        }
+
+        .letter-card:hover .envelope {
+            transform:
+                scale(1.15)
+                rotate(-5deg);
+        }
+
+        .letter-card h3 {
+            color: #fff;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 23px;
+
+            margin: 12px 0 5px;
+        }
+
+        .letter-card p {
+            margin: 0;
+            font-size: 20px;
+        }
+
+
+        /* ================= LETTER POPUP ================= */
+
+        .letter-modal {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            background:
+                rgba(0,0,0,0.80);
+
+            backdrop-filter: blur(12px);
+
+            z-index: 2000;
+
+            padding: 20px;
+        }
+
+        .letter-paper {
+            position: relative;
+
+            width: min(560px, 100%);
+
+            padding: 45px 35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff7fa,
+                    #ffeef4
+                );
+
+            color: #351923;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,0.7);
+
+            animation:
+                letterOpen 0.5s ease;
+        }
+
+        .letter-paper h2 {
+            color: #c93669;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 40px;
+
+            margin: 12px 0;
+        }
+
+        #letterEmoji {
+            font-size: 48px;
+        }
+
+        #letterContent {
+            color: #51343e;
+
+            font-size: 16px;
+
+            line-height: 1.9;
+
+            text-align: left;
+        }
+
+        .letter-line {
+            width: 80px;
+
+            height: 2px;
+
+            background: #e77b9d;
+
+            margin: 15px auto 25px;
+        }
+
+        .signature {
+            text-align: right;
+
+            color: #b73562;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 22px;
+        }
+
+        .letter-close {
+            position: absolute;
+
+            right: 15px;
+            top: 10px;
+
+            border: none;
+
+            background: none;
+
+            color: #8b5968;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+
+        @keyframes letterOpen {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.75)
+                    rotate(-3deg);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0);
+            }
+
+        }
+
+
+        /* ================= STEP 7 - LOVE QUIZ ================= */
+
+        .love-quiz {
+            min-height: 100vh;
+            padding: 100px 25px;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 70, 120, 0.12),
+                    transparent 60%
+                );
+        }
+
+        .love-quiz h2 {
+            color: #ff6f9c;
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .quiz-intro {
+            color: #aaa;
+            margin-bottom: 45px;
+        }
+
+        .quiz-box {
+            width: min(650px, 100%);
+            margin: auto;
+
+            padding: 40px 30px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,0.35);
+        }
+
+        #quizQuestion {
+            color: white;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 30px;
+
+            margin-bottom: 30px;
+        }
+
+        #quizOptions {
+            display: grid;
+            gap: 14px;
+        }
+
+        .quiz-option {
+            width: 100%;
+            height: auto;
+
+            padding: 15px 18px;
+
+            margin: 0;
+
+            border-radius: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            background:
+                rgba(255,255,255,0.05);
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .quiz-option:hover {
+            background:
+                rgba(255,70,120,0.15);
+
+            transform:
+                translateY(-2px);
+        }
+
+        .quiz-option.correct {
+            background:
+                rgba(70,200,120,0.18);
+
+            border-color:
+                #69d99b;
+        }
+
+        .quiz-option.wrong {
+            background:
+                rgba(255,70,90,0.18);
+
+            border-color:
+                #ff6b7d;
+        }
+
+        #nextQuestion {
+            width: auto;
+            height: auto;
+
+            margin-top: 28px;
+
+            padding: 13px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #ff6f9c;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        #nextQuestion:hover {
+            transform: scale(1.05);
+
+            box-shadow:
+                0 10px 30px
+                rgba(255,70,120,0.25);
+        }
+
+        #quizProgress {
+            margin-top: 22px;
+
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= QUIZ RESULT ================= */
+
+        .quiz-result {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            background:
+                rgba(0,0,0,0.85);
+
+            backdrop-filter: blur(12px);
+
+            z-index: 3000;
+
+            padding: 20px;
+        }
+
+        .quiz-result-box {
+            width: min(520px, 100%);
+
+            padding: 50px 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff7fa,
+                    #ffeef4
+                );
+
+            color: #351923;
+
+            border-radius: 25px;
+
+            animation:
+                quizResultOpen 0.5s ease;
+        }
+
+        .result-heart {
+            font-size: 60px;
+        }
+
+        .quiz-result-box h2 {
+            color: #c93669;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 38px;
+        }
+
+        #quizScore {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #b73562;
+        }
+
+        #quizMessage {
+            color: #51343e;
+
+            line-height: 1.7;
+        }
+
+        .quiz-result-box button {
+            width: auto;
+            height: auto;
+
+            margin-top: 15px;
+
+            padding: 13px 28px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #d94d7b;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        @keyframes quizResultOpen {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.75);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .letters {
+                grid-template-columns: 1fr;
+            }
+
+            .love-quiz h2 {
+                font-size: 38px;
+            }
+
+            .quiz-box {
+                padding: 30px 20px;
+            }
+
+            #quizQuestion {
+                font-size: 25px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .welcome h1 {
+                font-size: 34px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card {
+                height: 420px;
+            }
+
+            .story-section h2 {
+                font-size: 40px;
+            }
+
+        }
+
+        /* ================= BIRTHDAY COUNTDOWN ================= */
+
+.countdown-section {
+    min-height: 100vh;
+    padding: 100px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 70, 120, 0.13),
+            transparent 60%
+        );
+}
+
+.countdown-section h2 {
+    color: #ff6f9c;
+    font-size: 48px;
+    margin: 12px 0;
+}
+
+.countdown-intro {
+    color: #aaa;
+    margin-bottom: 45px;
+}
+
+.countdown-box {
+    width: min(700px, 100%);
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.time-box {
+    padding: 25px 15px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.3);
+
+    transition: 0.3s;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(255,120,160,0.35);
+
+    box-shadow:
+        0 20px 45px
+        rgba(255,60,120,0.12);
+}
+
+.time-box span {
+    display: block;
+
+    color: #ff6f9c;
+
+    font-size: 42px;
+
+    font-weight: bold;
+}
+
+.time-box small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #999;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.countdown-love {
+    margin-top: 35px;
+
+    color: #ff9abb;
+
+    font-size: 15px;
+}
+
+
+/* COUNTDOWN MOBILE */
+
+@media (max-width: 600px) {
+
+    .countdown-section h2 {
+        font-size: 36px;
+    }
+
+    .countdown-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .time-box span {
+        font-size: 34px;
+    }
+
+}
+
+/* ================= LOVE LETTER ================= */
+
+.love-letter-section {
+    min-height: 100vh;
+
+    padding: 110px 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 70, 120, 0.12),
+            transparent 60%
+        );
+}
+
+.love-letter-section h2 {
+    color: #ff6f9c;
+
+    font-size: 48px;
+
+    margin: 12px 0;
+}
+
+.letter-intro {
+    color: #aaa;
+
+    margin-bottom: 50px;
+
+    font-size: 15px;
+}
+
+.love-letter-container {
+    width: min(650px, 100%);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.letter-decoration {
+    font-size: 65px;
+
+    margin-bottom: -25px;
+
+    position: relative;
+
+    z-index: 2;
+
+    animation: floatingLetter 2s ease-in-out infinite;
+}
+
+@keyframes floatingLetter {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+.love-letter-paper {
+    width: 100%;
+
+    min-height: 480px;
+
+    padding: 55px 45px 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8fa,
+            #ffeef4
+        );
+
+    border-radius: 8px;
+
+    color: #351923;
+
+    text-align: left;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.45);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.love-letter-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border:
+        1px solid
+        rgba(190,70,110,0.18);
+
+    pointer-events: none;
+}
+
+.letter-top {
+    color: #a63d61;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+
+    position: relative;
+}
+
+.love-letter-text {
+    color: #4c303a;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    min-height: 250px;
+
+    position: relative;
+
+    white-space: pre-line;
+}
+
+.letter-signature {
+    margin-top: 30px;
+
+    color: #8e405b;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    text-align: right;
+
+    position: relative;
+}
+
+.letter-signature span {
+    color: #c93669;
+
+    font-size: 23px;
+}
+
+.read-letter-btn {
+    width: auto;
+
+    height: auto;
+
+    margin-top: 30px;
+
+    padding: 14px 28px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff477e;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.read-letter-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,70,120,0.25);
+}
+
+
+/* ================= LOVE LETTER MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .love-letter-section h2 {
+        font-size: 36px;
+    }
+
+    .love-letter-paper {
+        padding: 45px 25px 30px;
+
+        min-height: 520px;
+    }
+
+    .love-letter-text {
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+}
+
+/* ================= REASONS I LOVE YOU ================= */
+
+.reasons-section {
+    min-height: 100vh;
+
+    padding: 110px 25px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 70, 120, 0.12),
+            transparent 60%
+        );
+}
+
+.reasons-section h2 {
+    color: #ff6f9c;
+
+    font-size: 48px;
+
+    margin: 12px 0;
+}
+
+.reasons-intro {
+    color: #aaa;
+
+    margin-bottom: 50px;
+
+    line-height: 1.7;
+}
+
+.reasons-grid {
+    width: min(900px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.reason-card {
+    min-height: 210px;
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 24px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s,
+        background 0.3s,
+        box-shadow 0.3s;
+
+}
+
+.reason-card:hover {
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg);
+
+    background:
+        rgba(255,70,120,0.08);
+
+    border-color:
+        rgba(255,120,160,0.35);
+
+    box-shadow:
+        0 20px 50px
+        rgba(255,50,110,0.15);
+
+}
+
+.reason-heart {
+    font-size: 55px;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.3s;
+}
+
+.reason-card:hover .reason-heart {
+
+    transform:
+        scale(1.2);
+
+}
+
+.reason-card h3 {
+    color: white;
+
+    font-size: 21px;
+
+    margin-bottom: 8px;
+}
+
+.reason-card p {
+    color: #888;
+
+    font-size: 13px;
+
+    margin: 0;
+}
+
+
+/* ================= REASON MODAL ================= */
+
+.reason-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.82);
+
+    backdrop-filter:
+        blur(12px);
+
+    z-index: 4000;
+
+}
+
+.reason-modal-box {
+
+    position: relative;
+
+    width: min(560px, 100%);
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff7fa,
+            #ffeef4
+        );
+
+    color: #351923;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.7);
+
+    animation:
+        reasonPopup 0.4s ease;
+
+}
+
+.reason-modal-box > div:first-child {
+
+    font-size: 60px;
+
+}
+
+.reason-modal-box h2 {
+
+    color: #c93669;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 38px;
+
+    margin: 15px 0;
+
+}
+
+.reason-line {
+
+    width: 70px;
+
+    height: 2px;
+
+    background: #df7093;
+
+    margin: 15px auto 25px;
+
+}
+
+#reasonText {
+
+    color: #51343e;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+}
+
+.reason-bottom {
+
+    margin-top: 30px;
+
+    color: #b73562;
+
+    font-size: 14px;
+
+}
+
+.reason-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 18px;
+
+    width: auto;
+
+    height: auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    background: none;
+
+    border: none;
+
+    color: #8b5968;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+}
+
+@keyframes reasonPopup {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.75)
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+/* ================= REASONS MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .reasons-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 14px;
+
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .reasons-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .reasons-section h2 {
+
+        font-size: 36px;
+
+    }
+
+}
+
+/* =========================
+   OUR SONG
+========================= */
+
+.music-section {
+    min-height: 100vh;
+    padding: 90px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.music-section h2 {
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.music-intro {
+    max-width: 550px;
+    color: #cfcfcf;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.music-card {
+    width: min(90%, 430px);
+    padding: 40px 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 95px;
+
+    animation: spinRecord 5s linear infinite;
+    animation-play-state: paused;
+
+    margin-bottom: 25px;
+}
+
+.record.playing {
+    animation-play-state: running;
+}
+
+@keyframes spinRecord {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.music-info h3 {
+    margin: 5px 0;
+    font-size: 23px;
+}
+
+.music-info p {
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.music-card button {
+    width: auto;
+    min-width: 190px;
+    height: auto;
+    padding: 13px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+    .music-section h2 {
+        font-size: 32px;
+    }
+
+    .record {
+        width: 140px;
+        height: 140px;
+        font-size: 75px;
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= MEMORY POPUP ================= -->
+
+    <div id="memoryPopup" class="memory-popup">
+
+        <div class="popup-box">
+
+            <button class="close-btn" onclick="closeMemory()">
+                ×
+            </button>
+
+            <div id="popupIcon">
+                ❤️
+            </div>
+
+            <h2 id="popupTitle">
+                Our Memory
+            </h2>
+
+            <p id="popupText">
+                A little piece of us.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LOCK SCREEN ================= -->
+
+    <div id="lockScreen" class="lock-screen">
+
+        <div class="lock">
+
+            <div class="lock-icon">
+                🔒
+            </div>
+
+            <h1>
+                Birthday.exe ❤️
+            </h1>
+
+            <p>
+                THIS SURPRISE IS ONLY FOR ONE PERSON..
+            </p>
+
+            <p>
+                Enter the secret to unlock ❤️
+            </p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="secret password..."
+            >
+
+            <button onclick="unlock()">
+                Unlock ❤️
+            </button>
+
+            <div id="error-message"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= WELCOME SCREEN ================= -->
+
+    <div
+        id="welcomeScreen"
+        class="welcome"
+        style="display: none;"
+    >
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <p class="small">
+            ACCESS GRANTED
+        </p>
+
+        <h1 id="title"></h1>
+
+        <p id="message"></p>
+
+        <button onclick="startStory()">
+            Enter Our World ❤️
+        </button>
+
+    </div>
+
+
+    <!-- ================= STORY ================= -->
+
+    <section
+        id="story"
+        class="story-section"
+    >
+
+        <p class="story-small">
+            OUR LITTLE WORLD ❤️
+        </p>
+
+        <h2>
+            Our Story
+        </h2>
+
+        <p class="story-intro">
+
+            20 April 2026 se shuru hui ek choti si story....
+
+            <br>
+
+            jo ab meri favourite story ban gayi hai ❤️
+
+        </p>
+
+
+        <div class="timeline">
+
+
+            <div class="story-card">
+
+                <span>
+                    20 APRIL 2026
+                </span>
+
+                <h3>
+                    The Beginning ❤️
+                </h3>
+
+                <p>
+                    The day our "us" started.
+                    Ek date jo humesha yaad rahegi ❤️
+                </p>
+
+            </div>
+
+
+            <div class="story-card">
+
+                <span>
+                    OUR FAVOURITE THING 🎮
+                </span>
+
+                <h3>
+                    Gaming Together
+                </h3>
+
+                <p>
+                    Saath game khelna,
+                    ek dusre ko irritate karna,
+                    hasna aur random moments create karna ❤️
+
+                    Honestly, mujhe ye sab tumhare saath hi pasand hai.
+                </p>
+
+            </div>
+
+
+            <div class="story-card">
+
+                <span>
+                    EVERY LITTLE FIGHT 😡
+                </span>
+
+                <h3>
+                    Thodi Ladai, Bohot Pyaar
+                </h3>
+
+                <p>
+                    Choti choti fights hoti hain,
+                    thoda attitude bhi hota hai ❤️
+
+                    But at the end,
+                    pyaar hamesha zyada hota hai.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= MEMORIES ================= -->
+
+        <h2 class="memories-title">
+            Little Memories 📸
+        </h2>
+
+
+        <div class="gallery">
+
+
+            <div
+                class="photo-card"
+                onclick="showMemory(1)"
+            >
+
+                <img src="photo1.jpg">
+
+                <div class="memory-label">
+
+                    <span>
+                        MEMORY 01
+                    </span>
+
+                    <h3>
+                        My Favourite Person ❤️
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="photo-card"
+                onclick="showMemory(2)"
+            >
+
+                <img src="photo2.jpg">
+
+                <div class="memory-label">
+
+                    <span>
+                        MEMORY 02
+                    </span>
+
+                    <h3>
+                        Us being us 🫶
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="photo-card"
+                onclick="showMemory(3)"
+            >
+
+                <img src="photo3.jpg">
+
+                <div class="memory-label">
+
+                    <span>
+                        MEMORY 03
+                    </span>
+
+                    <h3>
+                        Little moments 💗
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="photo-card"
+                onclick="showMemory(4)"
+            >
+
+                <img src="photo4.jpg">
+
+                <div class="memory-label">
+
+                    <span>
+                        MEMORY 04
+                    </span>
+
+                    <h3>
+                        My E vuuuuuuu 😌
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="photo-card"
+                onclick="showMemory(5)"
+            >
+
+                <img src="photo5.jpg">
+
+                <div class="memory-label">
+
+                    <span>
+                        MEMORY 05
+                    </span>
+
+                    <h3>
+                        More memories loading... ✨
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= OPEN WHEN ================= -->
+
+    <section class="open-when">
+
+        <p class="story-small">
+            A LITTLE SOMETHING FOR YOU 💌
+        </p>
+
+        <h2>
+            Open When...
+        </h2>
+
+        <p class="open-intro">
+            Har letter ko tab open karna
+            jab tumhe uski zarurat ho. ❤️
+        </p>
+
+
+        <div class="letters">
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(1)"
+            >
+
+                <div class="envelope">
+                    💌
+                </div>
+
+                <h3>
+                    Open When You Miss Me
+                </h3>
+
+                <p>
+                    🥺
+                </p>
+
+            </div>
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(2)"
+            >
+
+                <div class="envelope">
+                    💌
+                </div>
+
+                <h3>
+                    Open When You're Sad
+                </h3>
+
+                <p>
+                    🫂
+                </p>
+
+            </div>
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(3)"
+            >
+
+                <div class="envelope">
+                    💌
+                </div>
+
+                <h3>
+                    Open When We're Fighting
+                </h3>
+
+                <p>
+                    😤❤️
+                </p>
+
+            </div>
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(4)"
+            >
+
+                <div class="envelope">
+                    💌
+                </div>
+
+                <h3>
+                    Open When You Need A Hug
+                </h3>
+
+                <p>
+                    🫂
+                </p>
+
+            </div>
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(5)"
+            >
+
+                <div class="envelope">
+                    💌
+                </div>
+
+                <h3>
+                    Open When You Doubt My Love
+                </h3>
+
+                <p>
+                    ❤️
+                </p>
+
+            </div>
+
+
+            <div
+                class="letter-card"
+                onclick="openLetter(6)"
+            >
+
+                <div class="envelope">
+                    🎂
+                </div>
+
+                <h3>
+                    Open On Your Birthday
+                </h3>
+
+                <p>
+                    ✨
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LETTER MODAL ================= -->
+
+    <div
+        id="letterModal"
+        class="letter-modal"
+    >
+
+        <div class="letter-paper">
+
+            <button
+                class="letter-close"
+                onclick="closeLetter()"
+            >
+                ×
+            </button>
+
+            <div id="letterEmoji">
+                💌
+            </div>
+
+            <h2 id="letterTitle"></h2>
+
+            <div class="letter-line"></div>
+
+            <p id="letterContent"></p>
+
+            <p class="signature">
+                — Your Harshi ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= STEP 7: LOVE QUIZ ================= -->
+
+    <section class="love-quiz">
+
+        <p class="story-small">
+            A LITTLE TEST FOR YOU 🎮❤️
+        </p>
+
+        <h2>
+            How Well Do You Know Your Harshi?
+        </h2>
+
+        <p class="quiz-intro">
+            Let's see...
+            kitna jaante ho apni Harshi ko? 👀❤️
+        </p>
+
+
+        <div class="quiz-box">
+
+            <div id="quizQuestion">
+                Question will appear here...
+            </div>
+
+            <div id="quizOptions"></div>
+
+            <button
+                id="nextQuestion"
+                onclick="nextQuizQuestion()"
+                style="display: none;"
+            >
+                Next ❤️
+            </button>
+
+            <div id="quizProgress"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUIZ RESULT ================= -->
+
+    <div
+        id="quizResult"
+        class="quiz-result"
+    >
+
+        <div class="quiz-result-box">
+
+            <div class="result-heart">
+                ❤️
+            </div>
+
+            <h2 id="quizResultTitle"></h2>
+
+            <p id="quizScore"></p>
+
+            <p id="quizMessage"></p>
+
+            <button onclick="restartQuiz()">
+                Play Again 🔄
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= BIRTHDAY COUNTDOWN ================= -->
+
+<section class="countdown-section">
+
+    <p class="story-small">
+        COUNTING EVERY SECOND ❤️
+    </p>
+
+    <h2>
+        Until Your Special Day 🎂
+    </h2>
+
+    <p class="countdown-intro">
+        E vuuuuuuu, your birthday is getting closer... 🥹❤️
+    </p>
+
+    <div class="countdown-box">
+
+        <div class="time-box">
+            <span id="days">00</span>
+            <small>Days</small>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            <small>Hours</small>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+
+    </div>
+
+    <p class="countdown-love">
+        Every second brings me closer to celebrating you. ❤️
+    </p>
+
+</section>
+<!-- ================= LOVE LETTER ================= -->
+
+<section class="love-letter-section">
+
+    <p class="story-small">
+        JUST FOR YOU, E VUUUUUUU 💌
+    </p>
+
+    <h2>
+        A Letter From Harshi ❤️
+    </h2>
+
+    <p class="letter-intro">
+        Kuch baatein jo shayad main har baar words mein nahi keh paati...
+    </p>
+
+    <div class="love-letter-container">
+
+        <div class="letter-decoration">
+            💌
+        </div>
+
+        <div class="love-letter-paper">
+
+            <div class="letter-top">
+                To: My E vuuuuuuu ❤️
+            </div>
+
+            <div
+                id="loveLetterText"
+                class="love-letter-text"
+            ></div>
+
+            <div class="letter-signature">
+                Forever yours,<br>
+                <span>Harshi ❤️</span>
+            </div>
+
+        </div>
+
+        <button
+            class="read-letter-btn"
+            onclick="readLoveLetter()"
+        >
+            Read My Letter Again 💌
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= REASONS I LOVE YOU ================= -->
+
+<section class="reasons-section">
+
+    <p class="story-small">
+        JUST A FEW REASONS ❤️
+    </p>
+
+    <h2>
+        Reasons Why I Love You
+    </h2>
+
+    <p class="reasons-intro">
+        There are honestly too many to count...
+        but here are a few. 🥹❤️
+    </p>
+
+    <div class="reasons-grid">
+
+        <div class="reason-card" onclick="showReason(1)">
+            <div class="reason-heart">❤️</div>
+            <h3>Reason #1</h3>
+            <p>Click to open</p>
+        </div>
+
+        <div class="reason-card" onclick="showReason(2)">
+            <div class="reason-heart">💕</div>
+            <h3>Reason #2</h3>
+            <p>Click to open</p>
+        </div>
+
+        <div class="reason-card" onclick="showReason(3)">
+            <div class="reason-heart">🥹</div>
+            <h3>Reason #3</h3>
+            <p>Click to open</p>
+        </div>
+
+        <div class="reason-card" onclick="showReason(4)">
+            <div class="reason-heart">😂</div>
+            <h3>Reason #4</h3>
+            <p>Click to open</p>
+        </div>
+
+        <div class="reason-card" onclick="showReason(5)">
+            <div class="reason-heart">🫂</div>
+            <h3>Reason #5</h3>
+            <p>Click to open</p>
+        </div>
+
+        <div class="reason-card" onclick="showReason(6)">
+            <div class="reason-heart">💗</div>
+            <h3>Reason #6</h3>
+            <p>Click to open</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REASON POPUP ================= -->
+
+<div id="reasonModal" class="reason-modal">
+
+    <div class="reason-modal-box">
+
+        <button
+            class="reason-close"
+            onclick="closeReason()"
+        >
+            ×
+        </button>
+
+        <div id="reasonEmoji">
+            ❤️
+        </div>
+
+        <h2 id="reasonTitle">
+            Reason
+        </h2>
+
+        <div class="reason-line"></div>
+
+        <p id="reasonText"></p>
+
+        <div class="reason-bottom">
+            Made with all my love ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<!-- OUR SONG -->
+<section class="music-section">
+
+    <p class="story-small">A SONG THAT REMINDS ME OF US 🎵</p>
+
+    <h2>Our Song ❤️</h2>
+
+    <p class="music-intro">
+        Whenever this song plays, think of me...
+        and remember all our little moments together. 🥹❤️
+    </p>
+
+    <div class="music-card">
+
+        <div class="record" id="musicRecord">
+            💿
+        </div>
+
+        <div class="music-info">
+            <h3>For My E Vuuuuuuu ❤️</h3>
+            <p>Our little soundtrack 🎶</p>
+        </div>
+
+        <audio id="loveSongPlayer" src="happy_birthday.mp3"></audio>
+        <button
+            id="musicToggleButton"
+            onclick="toggleLoveSong()">
+            ▶ Play Our Song
+        </button>
+
+    </div>
+
+</section>
+</body>
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ================= LOCK SCREEN ================= */
+
+        function unlock() {
+
+            let password =
+                document.getElementById("password").value;
+
+
+            if (password === "evuuuuuuu") {
+
+                document.getElementById("lockScreen").style.display =
+                    "none";
+
+                document.getElementById("welcomeScreen").style.display =
+                    "flex";
+
+
+                typeText(
+                    "title",
+                    "HAPPY BIRTHDAY MY LOVE ❤️",
+                    100
+                );
+
+
+                setTimeout(function () {
+
+                    typeText(
+                        "message",
+
+                        "I hope you have the best birthday ever. I love you so much and I will always be here for you, E vuuuuuuu ❤️",
+
+                        45
+                    );
+
+                }, 2500);
+
+
+            } else {
+
+                document.getElementById("error-message").innerText =
+                    "❌ Incorrect password. Please try again.";
+
+            }
+
+        }
+
+
+        /* ================= TYPING EFFECT ================= */
+
+        function typeText(elementId, text, speed) {
+
+            let element =
+                document.getElementById(elementId);
+
+            let i = 0;
+
+            element.innerHTML = "";
+
+
+            function typing() {
+
+                if (i < text.length) {
+
+                    element.innerHTML +=
+                        text.charAt(i);
+
+                    i++;
+
+                    setTimeout(
+                        typing,
+                        speed
+                    );
+
+                }
+
+            }
+
+            typing();
+
+        }
+
+
+        /* ================= START STORY ================= */
+
+        function startStory() {
+
+            document.getElementById("welcomeScreen").style.display =
+                "none";
+
+            document.getElementById("story").style.display =
+                "block";
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /* ================= MEMORY POPUP ================= */
+
+        function showMemory(number) {
+
+            let title = "";
+            let text = "";
+
+
+            if (number === 1) {
+
+                title =
+                    "My Favourite Person ❤️";
+
+                text =
+                    "Tum meri life ka woh part ho jiske bina normal days bhi incomplete lagte hain.";
+
+            }
+
+
+            if (number === 2) {
+
+                title =
+                    "Us Being Us 🫶";
+
+                text =
+                    "No perfect moment needed. Bas tum aur main, aur thodi si bakchodi.";
+
+            }
+
+
+            if (number === 3) {
+
+                title =
+                    "Little Moments 💗";
+
+                text =
+                    "Choti choti memories hi toh eventually sabse beautiful memories ban jaati hain.";
+
+            }
+
+
+            if (number === 4) {
+
+                title =
+                    "My E vuuuuuuu 😌";
+
+                text =
+                    "Haan, tum annoying ho... but unfortunately mere favourite annoying person ho. ❤️";
+
+            }
+
+
+            if (number === 5) {
+
+                title =
+                    "More Memories Loading... ✨";
+
+                text =
+                    "Ye sirf beginning hai. Abhi toh humari story mein bohot kuch baaki hai.";
+
+            }
+
+
+            document.getElementById("popupTitle").innerText =
+                title;
+
+            document.getElementById("popupText").innerText =
+                text;
+
+            document.getElementById("memoryPopup").style.display =
+                "flex";
+
+        }
+
+
+        function closeMemory() {
+
+            document.getElementById("memoryPopup").style.display =
+                "none";
+
+        }
+
+
+        /* ================= OPEN WHEN LETTERS ================= */
+
+        function openLetter(number) {
+
+            let title = "";
+            let content = "";
+            let emoji = "💌";
+
+
+            if (number === 1) {
+
+                emoji = "🥺";
+
+                title =
+                    "When You Miss Me";
+
+                content =
+                    "E vuuuuuuu, agar tum mujhe miss kar rahe ho " +
+                    "toh ek baat yaad rakhna — main bhi tumhe miss " +
+                    "kar rahi hoon. Distance annoying hai, but it " +
+                    "can't change what I feel for you. Bas aankhein " +
+                    "band karo aur imagine karo ki main tumhe ek " +
+                    "bada sa hug de rahi hoon. ❤️";
+
+            }
+
+
+            if (number === 2) {
+
+                emoji = "🫂";
+
+                title =
+                    "When You're Sad";
+
+                content =
+                    "Aaj agar mood acha nahi hai toh it's okay. " +
+                    "Har din perfect hona zaroori nahi hai. " +
+                    "Bas remember that you don't have to handle " +
+                    "everything alone. Main hoon na, E vu. ❤️";
+
+            }
+
+
+            if (number === 3) {
+
+                emoji = "😤";
+
+                title =
+                    "When We're Fighting";
+
+                content =
+                    "Okayyy Mr. Angry 😤❤️. Pehle gussa kar lo, " +
+                    "phir thoda shaant ho jao. But ek rule hai — " +
+                    "humari choti si fight humare pyaar se badi " +
+                    "kabhi nahi ho sakti. I still love you, idiot. 😂❤️";
+
+            }
+
+
+            if (number === 4) {
+
+                emoji = "🫂";
+
+                title =
+                    "When You Need A Hug";
+
+                content =
+                    "Come here. 🫂❤️ Ye lo ek giant virtual hug. " +
+                    "No talking, no questions, no arguments. " +
+                    "Bas thodi der mere paas raho.";
+
+            }
+
+
+            if (number === 5) {
+
+                emoji = "❤️";
+
+                title =
+                    "When You Doubt My Love";
+
+                content =
+                    "I don't love you only when everything is easy. " +
+                    "I love our silly conversations, our games, " +
+                    "our tiny fights, our laughter and even our " +
+                    "annoying moments. You're my person, E vu. ❤️";
+
+            }
+
+
+            if (number === 6) {
+
+                emoji = "🎂";
+
+                title =
+                    "Happy Birthday, E vuuuuuuu";
+
+                content =
+                    "Happy Birthday to the person who makes my " +
+                    "ordinary days feel special. 🥹❤️ " +
+                    "I wish I could be there beside you today, " +
+                    "but until then, keep this little piece of " +
+                    "my heart with you. I love you so much.";
+
+            }
+
+
+            document.getElementById("letterEmoji").innerText =
+                emoji;
+
+            document.getElementById("letterTitle").innerText =
+                title;
+
+            document.getElementById("letterContent").innerText =
+                content;
+
+            document.getElementById("letterModal").style.display =
+                "flex";
+
+        }
+
+
+        function closeLetter() {
+
+            document.getElementById("letterModal").style.display =
+                "none";
+
+        }
+
+
+        /* ================= STEP 7 - LOVE QUIZ ================= */
+
+        const quizQuestions = [
+
+            {
+                question:
+                    "Humari relationship officially kab start hui? ❤️",
+
+                options: [
+                    "14 February 2026",
+                    "20 April 2026",
+                    "11 September 2026",
+                    "1 January 2026"
+                ],
+
+                answer: 1
+            },
+
+
+            {
+                question:
+                    "Harshi tumhe kya nickname bulati hai? 👀",
+
+                options: [
+                    "Harsheed",
+                    "Baby",
+                    "Evuuuuuuu",
+                    "Cutie"
+                ],
+
+                answer: 2
+            },
+
+
+            {
+                question:
+                    "Hum dono ko kya karna pasand hai? 🎮",
+
+                options: [
+                    "Games khelna",
+                    "Sirf sona",
+                    "Shopping karna",
+                    "Cooking karna"
+                ],
+
+                answer: 0
+            },
+
+
+            {
+                question:
+                    "Humare beech kya hota rehta hai? 😤❤️",
+
+                options: [
+                    "Sirf silence",
+                    "Small fights + lots of love",
+                    "Roz breakup",
+                    "Nothing"
+                ],
+
+                answer: 1
+            },
+
+
+            {
+                question:
+                    "Harshi tumse kitna pyaar karti hai? 🥹",
+
+                options: [
+                    "Thoda sa",
+                    "Maybe",
+                    "Bahut zyada ❤️",
+                    "Ye question hi galat hai 😭"
+                ],
+
+                answer: 2
+            },
+
+
+            {
+                question:
+                    "Last question... Harsheed ko Harshi kitna important samajhti hai? ❤️",
+
+                options: [
+                    "Important",
+                    "Very important",
+                    "My person 🥹❤️",
+                    "Sab answers correct"
+                ],
+
+                answer: 3
+            }
+
+        ];
+
+
+        let currentQuizQuestion = 0;
+
+        let quizScoreValue = 0;
+
+        let quizAnswered = false;
+
+
+        function loadQuizQuestion() {
+
+            const question =
+                quizQuestions[currentQuizQuestion];
+
+
+            document.getElementById("quizQuestion").innerText =
+                question.question;
+
+
+            const optionsBox =
+                document.getElementById("quizOptions");
+
+
+            optionsBox.innerHTML = "";
+
+
+            quizAnswered = false;
+
+
+            question.options.forEach(
+                function (option, index) {
+
+                    const button =
+                        document.createElement("button");
+
+
+                    button.className =
+                        "quiz-option";
+
+
+                    button.innerText =
+                        option;
+
+
+                    button.onclick =
+                        function () {
+
+                            selectQuizAnswer(
+                                index,
+                                button
+                            );
+
+                        };
+
+
+                    optionsBox.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+
+            document.getElementById("quizProgress").innerText =
+                "Question " +
+                (currentQuizQuestion + 1) +
+                " of " +
+                quizQuestions.length;
+
+
+            document.getElementById("nextQuestion").style.display =
+                "none";
+
+        }
+
+
+        function selectQuizAnswer(
+            selectedIndex,
+            selectedButton
+        ) {
+
+            if (quizAnswered) return;
+
+
+            quizAnswered = true;
+
+
+            const question =
+                quizQuestions[currentQuizQuestion];
+
+
+            const allOptions =
+                document.querySelectorAll(
+                    ".quiz-option"
+                );
+
+
+            if (
+                selectedIndex ===
+                question.answer
+            ) {
+
+                selectedButton.classList.add(
+                    "correct"
+                );
+
+                quizScoreValue++;
+
+            } else {
+
+                selectedButton.classList.add(
+                    "wrong"
+                );
+
+                allOptions[
+                    question.answer
+                ].classList.add(
+                    "correct"
+                );
+
+            }
+
+
+            document.getElementById(
+                "nextQuestion"
+            ).style.display =
+                "inline-block";
+
+        }
+
+
+        function nextQuizQuestion() {
+
+            currentQuizQuestion++;
+
+
+            if (
+                currentQuizQuestion >=
+                quizQuestions.length
+            ) {
+
+                showQuizResult();
+
+            } else {
+
+                loadQuizQuestion();
+
+            }
+
+        }
+
+
+        function showQuizResult() {
+
+            let title = "";
+
+            let message = "";
+
+
+            if (
+                quizScoreValue ===
+                quizQuestions.length
+            ) {
+
+                title =
+                    "PERFECT SCORE! 🥹❤️";
+
+                message =
+                    "Congratulations E vuuuuuuu! " +
+                    "Tumne prove kar diya ki tum apni Harshi ko " +
+                    "bahut achhe se jaante ho. 😭❤️";
+
+            }
+
+
+            else if (
+                quizScoreValue >= 4
+            ) {
+
+                title =
+                    "Almost Perfect! 😭❤️";
+
+                message =
+                    "Not bad, E vu! Tum Harshi ko kaafi achhe se " +
+                    "jaante ho. Ab thoda aur attention do. 😂❤️";
+
+            }
+
+
+            else if (
+                quizScoreValue >= 2
+            ) {
+
+                title =
+                    "Hmmmm... 👀";
+
+                message =
+                    "E vuuuuuuu... thoda aur study karna padega " +
+                    "apni Harshi ko. 😂❤️";
+
+            }
+
+
+            else {
+
+                title =
+                    "EXCUSE ME?! 😭";
+
+                message =
+                    "Itne kam marks?! Ab Harshi se extra pyaar " +
+                    "karke compensation dena padega. 😂❤️";
+
+            }
+
+
+            document.getElementById(
+                "quizResultTitle"
+            ).innerText =
+                title;
+
+
+            document.getElementById(
+                "quizScore"
+            ).innerText =
+                "Your Score: " +
+                quizScoreValue +
+                " / " +
+                quizQuestions.length;
+
+
+            document.getElementById(
+                "quizMessage"
+            ).innerText =
+                message;
+
+
+            document.getElementById(
+                "quizResult"
+            ).style.display =
+                "flex";
+
+        }
+
+
+        function restartQuiz() {
+
+            currentQuizQuestion = 0;
+
+            quizScoreValue = 0;
+
+            document.getElementById(
+                "quizResult"
+            ).style.display =
+                "none";
+
+            loadQuizQuestion();
+
+        }
+
+
+        /* ================= START QUIZ ================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadQuizQuestion();
+
+            }
+        );
+
+
+        /* ================= BIRTHDAY COUNTDOWN ================= */
+
+function updateCountdown() {
+
+    const now = new Date();
+
+    let birthday = new Date(
+        now.getFullYear(),
+        8,
+        11,
+        0,
+        0,
+        0
+    );
+
+    /*
+        Agar is saal ka birthday
+        already nikal gaya hai,
+        toh next year's birthday use karo.
+    */
+
+    if (now >= birthday) {
+
+        birthday = new Date(
+            now.getFullYear() + 1,
+            8,
+            11,
+            0,
+            0,
+            0
+        );
+
+    }
+
+    const difference =
+        birthday.getTime() - now.getTime();
+
+
+    const days =
+        Math.floor(
+            difference / (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference / (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference / (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    document.getElementById("days").innerText =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/* Start Countdown */
+
+updateCountdown();
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+/* ================= LOVE LETTER ================= */
+
+const loveLetterMessage =
+`My E vuuuuuuu ❤️
+
+I don't know if I say this enough, but you genuinely mean so much to me.
+
+Since 20 April 2026, so many little things have started feeling more special because they have you in them.
+
+Our games, our random conversations, our stupid jokes, our small fights, and all those little moments... I love every bit of our story. 🥹❤️
+
+Sometimes distance makes things difficult, but it can never change how much I care about you.
+
+I hope whenever you read this, you remember that somewhere there is a Harshi who is thinking about you, smiling because of you, and loving you more than she can properly explain.
+
+You are not just someone I love.
+
+You are my person. ❤️
+
+And no matter how many days, months, or years pass...
+
+I will always be grateful that our story became "us".
+
+Happy Birthday, E vuuuuuuu. 🎂❤️
+
+I love you.
+More than these words can ever say. ❤️`;
+
+
+function readLoveLetter() {
+
+    const letterElement =
+        document.getElementById(
+            "loveLetterText"
+        );
+
+    letterElement.innerHTML = "";
+
+    let index = 0;
+
+
+    function typeLetter() {
+
+        if (
+            index <
+            loveLetterMessage.length
+        ) {
+
+            letterElement.innerHTML +=
+                loveLetterMessage.charAt(index);
+
+            index++;
+
+            setTimeout(
+                typeLetter,
+                28
+            );
+
+        }
+
+    }
+
+
+    typeLetter();
+
+}
+
+
+/* Start letter automatically */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        readLoveLetter();
+
+    }
+);
+
+/* ================= REASONS I LOVE YOU ================= */
+
+function showReason(number) {
+
+    let title = "";
+    let text = "";
+    let emoji = "❤️";
+
+
+    if (number === 1) {
+
+        title = "The Way You Care ❤️";
+
+        text =
+            "Mujhe sabse zyada tumhari woh little caring " +
+            "things pasand hain jo shayad tum khud notice bhi " +
+            "nahi karte. Tumhara care karna mujhe bohot special feel karwata hai.";
+
+        emoji = "❤️";
+
+    }
+
+
+    if (number === 2) {
+
+        title = "Our Random Moments 💕";
+
+        text =
+            "Humari random conversations, random jokes aur " +
+            "random bakchodi... somehow mere favourite moments " +
+            "ban jaate hain. Tumhare saath boring day bhi boring nahi lagta.";
+
+        emoji = "💕";
+
+    }
+
+
+    if (number === 3) {
+
+        title = "You Understand Me 🥹";
+
+        text =
+            "Har baar words ki zarurat nahi hoti. Kabhi kabhi " +
+            "tum bas samajh jaate ho, aur wahi cheez mere liye " +
+            "bohot matter karti hai.";
+
+        emoji = "🥹";
+
+    }
+
+
+    if (number === 4) {
+
+        title = "Your Annoying Side 😂";
+
+        text =
+            "Haan, tum annoying ho. Bohot zyada. 😂 " +
+            "Lekin sach ye hai ki tumhari wahi annoying side " +
+            "bhi mujhe secretly bohot cute lagti hai.";
+
+        emoji = "😂";
+
+    }
+
+
+    if (number === 5) {
+
+        title = "You Feel Like Home 🫂";
+
+        text =
+            "Tumse baat karne ke baad ek alag sa comfort milta hai. " +
+            "Chahe day kitna bhi difficult ho, tumse baat karke " +
+            "sab thoda better feel hone lagta hai.";
+
+        emoji = "🫂";
+
+    }
+
+
+    if (number === 6) {
+
+        title = "Because You're You 💗";
+
+        text =
+            "Honestly, mujhe tumse pyaar karne ke liye koi " +
+            "perfect reason nahi chahiye. I love you simply " +
+            "because you're YOU. My E vuuuuuuu. ❤️";
+
+        emoji = "💗";
+
+    }
+
+
+    document.getElementById(
+        "reasonEmoji"
+    ).innerText = emoji;
+
+
+    document.getElementById(
+        "reasonTitle"
+    ).innerText = title;
+
+
+    document.getElementById(
+        "reasonText"
+    ).innerText = text;
+
+
+    document.getElementById(
+        "reasonModal"
+    ).style.display = "flex";
+
+}
+
+
+function closeReason() {
+
+    document.getElementById(
+        "reasonModal"
+    ).style.display = "none";
+
+}
+
+/* =========================
+   OUR SONG
+========================= */
+
+const loveSongPlayer = document.getElementById("loveSongPlayer");
+const musicToggleButton = document.getElementById("musicToggleButton");
+const musicRecord = document.getElementById("musicRecord");
+
+function toggleLoveSong() {
+
+    if (loveSongPlayer.paused) {
+
+        loveSongPlayer.play()
+            .then(() => {
+
+                musicToggleButton.innerText = "⏸ Pause Our Song";
+
+                musicRecord.classList.add("playing");
+
+            })
+            .catch(() => {
+
+                musicToggleButton.innerText = "Tap Again To Play 🎵";
+
+            });
+
+    } else {
+
+        loveSongPlayer.pause();
+
+        musicToggleButton.innerText = "▶ Play Our Song";
+
+        musicRecord.classList.remove("playing");
+
+    }
+}
+
+loveSongPlayer.addEventListener("ended", () => {
+
+    musicToggleButton.innerText = "▶ Play Our Song";
+
+    musicRecord.classList.remove("playing");
+
+});
+
+
+    </script>
+
+
+
+</html>
