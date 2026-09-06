@@ -1713,6 +1713,153 @@
 
 }
 
+
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+.final-surprise {
+    min-height: 100vh;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.final-surprise h2 {
+    font-size: 42px;
+    margin: 10px 0 15px;
+}
+
+.final-intro {
+    color: #cfcfcf;
+    margin-bottom: 35px;
+}
+
+.surprise-button {
+    width: auto;
+    height: auto;
+    padding: 15px 28px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.final-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+    padding: 20px;
+}
+
+.final-overlay.show {
+    display: flex;
+}
+
+.final-message {
+    position: relative;
+    width: min(90%, 600px);
+    padding: 55px 30px;
+    text-align: center;
+
+    border-radius: 30px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow: 0 20px 80px rgba(0,0,0,0.7);
+
+    animation: finalReveal 0.8s ease;
+}
+
+@keyframes finalReveal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.final-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    width: auto;
+    height: auto;
+
+    background: transparent;
+    border: none;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.big-heart {
+    font-size: 75px;
+    animation: heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.final-message h2 {
+    font-size: 35px;
+    margin: 15px 0 25px;
+}
+
+#finalTypedMessage {
+    color: #ddd;
+    line-height: 1.9;
+    font-size: 17px;
+    min-height: 150px;
+}
+
+.final-hearts {
+    margin-top: 25px;
+    font-size: 22px;
+    letter-spacing: 8px;
+}
+
+@media (max-width: 600px) {
+
+    .final-surprise h2 {
+        font-size: 30px;
+    }
+
+    .final-message h2 {
+        font-size: 27px;
+    }
+
+    #finalTypedMessage {
+        font-size: 15px;
+    }
+
+}
+
     </style>
 
 </head>
@@ -2499,7 +2646,48 @@
             ▶ Play Our Song
         </button>
 
+   
+        </div>
+
+<!-- FINAL SURPRISE -->
+<section class="final-surprise">
+
+    <p class="story-small">BEFORE YOU GO... 👀</p>
+
+    <h2>Wait... One Last Thing ❤️</h2>
+
+    <p class="final-intro">
+        I saved something special for the very end...
+    </p>
+
+    <button class="surprise-button" onclick="openFinalSurprise()">
+        Open My Last Surprise 🎁
+    </button>
+
+</section>
+
+<!-- FINAL SURPRISE POPUP -->
+<div class="final-overlay" id="finalOverlay">
+
+    <div class="final-message">
+
+        <button class="final-close" onclick="closeFinalSurprise()">×</button>
+
+        <div class="big-heart">❤️</div>
+
+        <p class="story-small">HAPPY BIRTHDAY, MY LOVE</p>
+
+        <h2>For My E Vuuuuuuu 🥹❤️</h2>
+
+        <p id="finalTypedMessage"></p>
+
+        <div class="final-hearts">
+            ❤️ ✨ ❤️ ✨ ❤️
+        </div>
+
     </div>
+
+</div>
 
 </section>
 </body>
@@ -3527,7 +3715,65 @@ loveSongPlayer.addEventListener("ended", () => {
 
 });
 
+/* =========================
+   FINAL SURPRISE
+========================= */
 
+const finalSurpriseMessage = `
+Happy Birthday, my love. ❤️
+
+No matter how far apart we are,
+you will always have a special place in my heart.
+
+From our games and random conversations
+to our tiny fights and countless moments of love,
+I wouldn't trade any of it for anything.
+
+Thank you for being you.
+
+I love you more than I can put into words,
+E Vuuuuuuu. 🥹❤️
+
+Here's to us,
+and to all the memories we still have to make. ✨
+`;
+
+function openFinalSurprise() {
+
+    const finalOverlay = document.getElementById("finalOverlay");
+    const finalText = document.getElementById("finalTypedMessage");
+
+    finalOverlay.classList.add("show");
+
+    finalText.innerHTML = "";
+
+    let i = 0;
+
+    function typeFinalMessage() {
+
+        if (i < finalSurpriseMessage.length) {
+
+            finalText.innerHTML +=
+                finalSurpriseMessage[i] === "\n"
+                    ? "<br>"
+                    : finalSurpriseMessage[i];
+
+            i++;
+
+            setTimeout(typeFinalMessage, 35);
+        }
+    }
+
+    typeFinalMessage();
+}
+
+function closeFinalSurprise() {
+
+    document
+        .getElementById("finalOverlay")
+        .classList.remove("show");
+
+}
     </script>
 
 
